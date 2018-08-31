@@ -5,7 +5,7 @@ import * as React from 'react'
 import { ApolloProvider } from 'react-apollo'
 
 import logo from './logo.svg'
-import WorkflowSerials from './WorkflowSerials'
+import Workflows from './Workflows'
 
 const client = new ApolloClient({
   uri: "graphql"
@@ -21,7 +21,7 @@ class App extends React.Component {
             <h1 className="App-title">DeepSegment PoC</h1>
           </header>
           <p className="App-intro">Workflow serials:</p>
-          <WorkflowSerials />
+          <Workflows />
         </div>
       </ApolloProvider>
     );
