@@ -32,39 +32,38 @@ const WorkflowSerials = () => (
       let key = 0;
       // tslint:disable-next-line:no-console
       console.log("data", data);
-      return (
-        <dl>
-          {data.allWorkflows.nodes.map(
-            ({
-              serial,
-              state,
-              tasksByWorkflowSerial
-            }: {
-              serial: number;
-              state: number;
-              tasksByWorkflowSerial: any;
-            }) => [
-              <dt key={key}>serial</dt>,
-              <dd key={key++}>{`${serial}`}</dd>,
-              <dt key={key}>state</dt>,
-              <dd key={key++}>{`${state}`}</dd>,
-              <dt key={key}>tasksByWorkflowSerial</dt>,
-              <dd key={key++}>
-                {tasksByWorkflowSerial.nodes.map(
-                  ({
-                    serial: taskSerial,
-                    inputs
-                  }: {
-                    serial: number;
-                    inputs: string;
-                  }) => (
-                    <p>{`taskSerial: ${taskSerial}, inputs: ${inputs}`}</p>
-                  )
-                )}
-              </dd>
-            ]
-          )}
-        </dl>
+      return data.allWorkflows.nodes.map(
+        ({
+          serial,
+          state,
+          tasksByWorkflowSerial
+        }: {
+          serial: number;
+          state: number;
+          tasksByWorkflowSerial: any;
+        }) => (
+          <div key={key++}>
+            <h2>{`Workflow ${serial}`}</h2>
+            {`state: ${state}`}
+            <br />
+            <h3>Tasks</h3>
+            <div>
+              {tasksByWorkflowSerial.nodes.map(
+                ({
+                  serial: taskSerial,
+                  inputs
+                }: {
+                  serial: number;
+                  inputs: string;
+                }) => (
+                  <p
+                    key={key++}
+                  >{`taskSerial: ${taskSerial}, inputs: ${inputs}`}</p>
+                )
+              )}
+            </div>
+          </div>
+        )
       );
     }}
   </Query>
