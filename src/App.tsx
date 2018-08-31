@@ -1,7 +1,27 @@
-import * as React from 'react';
-import './App.css';
+import './App.css'
 
-import logo from './logo.svg';
+import ApolloClient from 'apollo-boost'
+import gql from 'graphql-tag'
+import * as React from 'react'
+
+import logo from './logo.svg'
+
+const client = new ApolloClient({
+  uri: "graphql"
+});
+
+client
+  .query({
+    query: gql`
+      {
+        allJobs {
+          totalCount
+        }
+      }
+    `
+  })
+  // tslint:disable-next-line:no-console
+  .then(result => console.log(result));
 
 class App extends React.Component {
   public render() {
