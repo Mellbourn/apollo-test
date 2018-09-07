@@ -6,6 +6,7 @@ const WorkflowSerials = () => (
   <div>
     <p className="App-intro">Workflow serials:</p>
     <Query
+      pollInterval={300000}
       query={gql`
         {
           allWorkflows {
