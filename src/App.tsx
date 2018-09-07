@@ -5,6 +5,7 @@ import * as React from 'react'
 import { ApolloProvider } from 'react-apollo'
 import { Route, Switch } from 'react-router-dom'
 
+import Counter from './Counter'
 import Empty from './Empty'
 import Header from './Header'
 import logo from './logo.svg'
@@ -27,6 +28,7 @@ class App extends React.Component {
           </header>
           <Header />
           <button onClick={resetStore}>empty cache</button>
+          <Counter />
           <Switch>
             <Route exact={true} path="/" component={Empty} />
             <Route exact={true} path="/workflows" component={Workflows} />
