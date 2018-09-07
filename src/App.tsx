@@ -12,6 +12,10 @@ import logo from './logo.svg'
 import Workflows from './Workflows'
 
 const client = new ApolloClient({
+  clientState: {
+    defaults: { counter: 0 },
+    resolvers: null
+  },
   uri: "graphql"
 });
 

@@ -1,17 +1,27 @@
 import { ApolloClient } from 'apollo-boost'
-// import gql from 'graphql-tag'
+import gql from 'graphql-tag'
 import * as React from 'react'
-import { ApolloConsumer } from 'react-apollo'
+import { Query } from 'react-apollo'
 
-// const GET_COUNTER = gql`
-//   {
-//     counter @client
-//   }
-// `;
+const GET_COUNTER = gql`
+  {
+    counter @client
+  }
+`;
+
 const Counter = () => (
-  <ApolloConsumer>
-    {client => <button onClick={increase(client)}>Increase!</button>}
-  </ApolloConsumer>
+  <Query query={GET_COUNTER}>
+    {({ data, client }) => {
+      // tslint:disable-next-line:no-console
+      console.log("data", data);
+      return (
+        <div>
+          <button onClick={increase(client)}>Increase!</button>
+          <span>{data.counter}</span>
+        </div>
+      );
+    }}
+  </Query>
 );
 
 export default Counter;
