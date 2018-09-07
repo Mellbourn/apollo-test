@@ -14,6 +14,8 @@ const client = new ApolloClient({
   uri: "graphql"
 });
 
+const resetStore = () => client.resetStore();
+
 class App extends React.Component {
   public render() {
     return (
@@ -24,6 +26,7 @@ class App extends React.Component {
             <h1 className="App-title">DeepSegment PoC</h1>
           </header>
           <Header />
+          <button onClick={resetStore}>empty cache</button>
           <Switch>
             <Route exact={true} path="/" component={Empty} />
             <Route exact={true} path="/workflows" component={Workflows} />
